@@ -37,6 +37,8 @@ DATABASE_PATH = os.path.join(PROJECT_PATH, 'bookmark.db')
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.6/howto/deployment/checklist/
 
+LOGIN_URL = '/bookmark/login/'
+
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'u+kdh=wa5_$u9b9r=hn0ey1((+a6f28#q*6eg7m=mg9n_uk(ue'
 
