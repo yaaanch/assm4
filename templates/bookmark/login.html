@@ -1,23 +1,17 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <!-- Is anyone getting tired of repeatedly entering the header over and over?? -->
-        <title>Bookmark</title>
-    </head>
-
-    <body>
+{% extends 'bookmark/base.html' %}
+{%load newfilters%}
+{% block title %}{{ category_name }}{% endblock %}
+{%block body_block%}
         <h1>Login to Bookmark</h1>
 
         <form id="login_form" method="post" action="/bookmark/login/">
             {% csrf_token %}
-            Username: <input type="text" name="username" value="" size="50" />
+          <b>Username</b> <input type="text" class="form-control" name="username" value="" size="50" />
             <br />
-            Password: <input type="password" name="password" value="" size="50" />
+          <b>Password</b> <input type="password" class="form-control" name="password" value="" size="50" />
             <br />
 
-            <input type="submit" value="submit" />
+          <button class="btn btn-primary" type="submit" name="submit"> Submit </button>
         </form>
-
-    </body>
-</html>
+{%endblock%}
 

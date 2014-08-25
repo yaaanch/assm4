@@ -1,29 +1,42 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <title>Bookmark</title>
-    </head>
-    <body>
+{% extends 'bookmark/base.html' %}
+{%load newfilters%}
+{% block title %}Bookmark{% endblock %}
+{%block body_block%}
         {% if user.is_authenticated %}
-            {% if categories %}
+             <div class="row">
+             <div class="col-md-6">
+             {% if categories %}
                 <ul>
+                  
+                    <h2>Top Five Categories</h2>
                     {% for category in categories %}
-                    <!-- Following line changed to add an HTML hyperlink -->
-                    <li><a href="/bookmark/category/{{ category.url }}">{{ category.name }}</a></li>
+                      <!-- Following line changed to add an HTML hyperlink -->
+                      <li><a href="/bookmark/category/{{ category.url }}">{{ category.name }}</a></li>
                     {% endfor %}
                 </ul>
              {% else %}
                   <strong>There are no categories present.</strong>
              {% endif %}
-            <a href="/bookmark/restricted/">Restricted Page</a><br />
-            <a href="/bookmark/add_category/">Add a New Category</a><br />
-            <a href="/bookmark/logout/">Logout</a><br />
+             </div>
+             <div class="col-md-6">
+              <a href="/bookmark/restricted/" class="btn btn-link btn-lg btn-block">Restricted Page</a><br />
+              <a href="/bookmark/add_category/" class="btn btn-link btn-lg btn-block">Add a New Category</a><br />
+              <a href="/bookmark/logout/" class="btn btn-link btn-lg btn-block">Logout</a><br />
+             </div>
         {% else %}
-            <a href="/bookmark/register/">Register Here</a><br />
-            <a href="/bookmark/login/">Login</a><br />
+            <div class="row">
+            <div class="col-md-6">
+            <h2>Top Five Categories</h2>
+            {% for category in categories %}
+              <!-- Following line changed to add an HTML hyperlink -->
+              <li><a href="/bookmark/category/{{ category.url }}">{{ category.name }}</a></li>
+            {% endfor %}
+            </div>
+            <div class="col-md-6">
+              <p></p>
+            <a href="/bookmark/register/" class="btn btn-primary btn-lg btn-block" type="button" name="register">Register</a>  
+            <a href="/bookmark/login/" class="btn btn-primary btn-lg btn-block" type="button" name="login">Login</a>
+            </div>
+            </div>
         {% endif %}
-
-               
-        
-    </body>
-</html>
+{%endblock%}
